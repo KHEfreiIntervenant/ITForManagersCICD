@@ -14,7 +14,7 @@ pipeline {
         }
         
         stage('Acceptance Testing') {
-            input('This is going to deploy to production')
+            input('This is going o deploy to production ')
         }
         stage('Deploy master branch') {
             steps {
