@@ -101,7 +101,7 @@ export default class TasksList extends Component {
               borderRadius: '5px',}}
             >
             <h1 style={{textAlign:'center',padding: '50px 0',color:'#cbce51'}}>The New and Improved Task Manager</h1>
-            <p style={{textAlign:'justify',color:'#fff'}}>This is a new sample application for task management, designed for the course 
+            <p style={{textAlign:'justify',color:'#fff'}}>This is another new sample application for task management, designed for the course 
             of Software Development for Managers, at Efrei Paris. It serves to provide a 
             running example of a full-stack application, including a Frontend, a Backend, 
             a database and RESTful communication.</p>
