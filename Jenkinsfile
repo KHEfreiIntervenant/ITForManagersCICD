@@ -13,38 +13,18 @@ pipeline {
             }
         }
         
-        // stage('Test the backend develop branch') {
-        //     steps {
-        //         bat 'conda init cmd.exe'
-        //         bat 'cd backend && activate base && pip install -r requirements.txt && python -m pytest .'
-        //     }
-        // }
-        // stage('Merge develop branch into a release branch') {
-        //     steps {
-        //         bat 'git checkout develop'
-        //         bat 'git pull'
-        //         bat 'git checkout release/jenkins'
-        //         bat 'git merge develop'
-        //         withCredentials([usernamePassword(credentialsId: 'GitHub', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-        //             bat "git push http://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ealeixoc-99/engineering-toxicity-monitor.git"
-        //         }
-        //     }
-        // }
-        // stage('Merge release branch into master') {
-        //     steps {
-        //         bat 'git checkout release/jenkins'
-        //         bat 'git pull'
-        //         bat 'git checkout master'
-        //         bat 'git merge release/jenkins'
-        //         withCredentials([usernamePassword(credentialsId: 'GitHub', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-        //             bat "git push http://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ealeixoc-99/engineering-toxicity-monitor.git"
-        //         }
-        //     }
-        // }
+        stage('Acceptance Testing') {
+            input(
+            message: 'This is going to deploy to production', parameters: [
+            [$class: 'BooleanParameterDefinition', defaultValue: false, description: '', name: 'Please confirm you accept the app for deployment']
+        ])
+        }
         stage('Deploy master branch') {
             steps {
-                sh 'docker-compose up -d --build'
+                echo 'deploying to master'
+                // sh 'docker-compose up -d --build'
             }
         }
     }
 }
+
