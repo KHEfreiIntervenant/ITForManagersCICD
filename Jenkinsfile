@@ -2,16 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Deploy the develop branch') {
-            steps {
-                sh 'docker-compose up -d --build'
-            }
-        }
         stage('Test the frontend develop branch') {
             steps {
                 sh 'cd frontend && npm install && npm test -- --watchAll=false'
             }
         }
+        stage('Deploy the develop branch') {
+            steps {
+                sh 'cd ../ && docker-compose up -d --build'
+            }
+        }
+        
         // stage('Test the backend develop branch') {
         //     steps {
         //         bat 'conda init cmd.exe'
