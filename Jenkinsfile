@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Deploy the develop branch') {
             steps {
-                sh 'cd ../ && docker-compose up -d --build'
+                sh 'docker-compose up -d --build'
             }
         }
         
