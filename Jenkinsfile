@@ -14,10 +14,7 @@ pipeline {
         }
         
         stage('Acceptance Testing') {
-            input(
-            message: 'This is going to deploy to production', parameters: [
-            [$class: 'BooleanParameterDefinition', defaultValue: false, description: '', name: 'Please confirm you accept the app for deployment']
-        ])
+            input('This is going to deploy to production')
         }
         stage('Deploy master branch') {
             steps {
