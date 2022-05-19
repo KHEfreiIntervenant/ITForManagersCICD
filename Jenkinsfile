@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Deploy the develop branch') {
             steps {
-                bat 'docker-compose up -d --build'
+                sh 'docker-compose up -d --build'
             }
         }
         stage('Test the frontend develop branch') {
             steps {
-                bat 'cd frontend && npm install && npm test -- --watchAll=false'
+                sh 'cd frontend && npm install && npm test -- --watchAll=false'
             }
         }
         // stage('Test the backend develop branch') {
@@ -42,7 +42,7 @@ pipeline {
         // }
         stage('Deploy master branch') {
             steps {
-                bat 'docker-compose up -d --build'
+                sh 'docker-compose up -d --build'
             }
         }
     }
